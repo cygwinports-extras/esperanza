@@ -1,4 +1,5 @@
 GIT_URI="git://git.xmms.se/xmms2/${PN}.git"
+GIT_REV=9b1f8b8
 inherit git qt4-qconf
 
 DESCRIPTION="Qt4 XMMS2 client"

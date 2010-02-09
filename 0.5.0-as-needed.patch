@@ -10,7 +10,7 @@
  
  !win32 {
  	include (conf.pri)
-+	LIBS += -lboost_signals
++	LIBS += -lboost_signals-mt
  }
  
  win32 {
