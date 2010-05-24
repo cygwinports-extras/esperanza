@@ -1,35 +1,25 @@
---- origsrc/esperanza/config.pri	2009-07-23 02:10:53.000000000 -0500
-+++ src/esperanza/config.pri	2009-07-23 14:41:08.047584300 -0500
-@@ -6,12 +6,12 @@ QMAKE_CXXFLAGS_WARN_ON += -Wno-unused-pa
- macx {
- 	INCLUDEPATH += /opt/local/include # ugly
- 	DEFINES += HAVE_DNSSD
--	LIBS += -lboost_signals
- 	QMAKE_LFLAGS_SHAPP += -bind_at_load
+FIXME: ugly hack to find conf.pri with vpath qmake
+
+--- origsrc/esperanza/config.pri	2010-05-24 14:37:14.000000000 -0500
++++ src/esperanza/config.pri	2010-05-24 14:50:10.526181300 -0500
+@@ -11,7 +11,8 @@ macx {
  }
  
  !win32 {
- 	include (conf.pri)
-+	LIBS += -lboost_signals-mt
+-	include (conf.pri)
++	include (../../build/conf.pri)
++	LIBS += $$QMAKE_LIBS_X11
  }
  
  win32 {
---- origsrc/esperanza/src/ui/ui.pro	2009-07-23 02:10:53.000000000 -0500
-+++ src/esperanza/src/ui/ui.pro	2009-07-23 14:24:44.952773600 -0500
-@@ -1,7 +1,6 @@
- TEMPLATE = app
- BINDIR = /usr/bin
- QT += network xml
--include (../../config.pri)
+--- origsrc/esperanza/src/ui/ui.pro	2010-05-24 14:37:15.000000000 -0500
++++ src/esperanza/src/ui/ui.pro	2010-05-24 14:42:25.590588500 -0500
+@@ -22,7 +22,7 @@ win32 {
+ 	COMPONENTS+=../lib/release/liblib.a ../../data/release/libdata.a
+ }
  
- DIALOGS += lastfm medialibdialog \
- 		streamingdialog firsttimewizard \
-@@ -24,6 +23,8 @@ win32 {
+-LIBS += $$COMPONENTS
++LIBS = $$COMPONENTS $$LIBS
  
- LIBS += $$COMPONENTS
- 
-+include (../../config.pri)
-+
  PRE_TARGETDEPS = $$COMPONENTS
  
- # Target

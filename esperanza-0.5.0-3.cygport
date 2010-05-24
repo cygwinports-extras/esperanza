@@ -1,9 +1,9 @@
 GIT_URI="git://git.xmms.se/xmms2/${PN}.git"
-GIT_REV=9b1f8b8
+GIT_REV=1b81dc2
 inherit git qt4-qconf
 
 DESCRIPTION="Qt4 XMMS2 client"
-HOMEPAGE="http://wiki.xmms2.xmms.se/wiki/Client:Esperanza"
+HOMEPAGE="http://xmms2.org/wiki/Client:Esperanza"
 #SRC_URI="http://exodus.xmms.se/~tru/esperanza/${PV_MAJ_MIN}/${P}.tar.gz"
 PATCH_URI="0.5.0-as-needed.patch"
 
@@ -12,7 +12,5 @@ QCONF_ARGS="--disable-growl"
 src_install() {
 	cd ${B}
 	qt4_qmake_install
-
-	doicon ${S}/data/images/esperanza.png
-	make_desktop_entry esperanza Esperanza esperanza "AudioVideo;Audio;Player;Qt" "Qt4 XMMS2 client"
+	make_desktop_entry esperanza Esperanza xmms2 "AudioVideo;Audio;Player;Qt" "Qt4 XMMS2 client"
 }

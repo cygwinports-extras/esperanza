@@ -1,4 +1,4 @@
 category: Audio
-requires: libboost1.40 libgcc1 libQtCore4 libQtGui4 libQtNetwork4 libQtXml4 libstdc++6 libX11_6 libxmmsclient5 libxmmsclient++3
+requires: libgcc1 libQtCore4 libQtGui4 libQtNetwork4 libQtXml4 libstdc++6 libX11_6 libxmmsclient6 libxmmsclient++4
 sdesc: "Qt4 XMMS2 client"
 ldesc: "A Qt4 client for the XMMS2 music player daemon."
