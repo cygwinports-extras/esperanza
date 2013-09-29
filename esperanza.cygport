@@ -1,0 +1,30 @@
+GIT_URI="git://git.xmms2.org/xmms2/esperanza.git"
+GIT_REV=1b81dc2
+inherit git qt4-qconf
+
+NAME="esperanza"
+VERSION=0.5.0
+RELEASE=3
+CATEGORY="Audio"
+SUMMARY="Qt XMMS2 client"
+DESCRIPTION="A Qt client for the XMMS2 music player daemon."
+HOMEPAGE="http://xmms2.org/wiki/Client:Esperanza"
+
+PATCH_URI="0.5.0-as-needed.patch"
+
+QCONF_ARGS="--disable-growl"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	cygqconf4
+	./configure --prefix=/usr --qtdir=${QT4_QTDIR} --disable-growl
+	cygqmake4 LIBS+=-lX11
+	cygmake
+}
+
+src_install() {
+	cd ${B}
+	qt4_qmake_install
+	make_desktop_entry esperanza Esperanza xmms2 "AudioVideo;Audio;Player;Qt" "Qt4 XMMS2 client"
+}
